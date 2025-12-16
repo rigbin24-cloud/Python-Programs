@@ -68,14 +68,28 @@ def f_dinner():
                 
 
                 if friends_dinner =="y":
-                    typingEffect("'Hey thanks man! You know, it's just as they say, 'Food: what else are friends for?', orr something like that.'\n" \
-                    "Indeed. What else are friends for?\n" \
-                    "After dinner, which indeed was quickly devoured, your friend spends the night explaining to you how he isn't going to be able to pay his energy bill this month \n" \
-                    "due to 'AI engineers inflating the cost of water'. He asks you for a loan of $150 promising to pay you back next month.\n" \
-                    "You cave in for anything more than to see him go. He kisses you emphatically and promptly leaves saying he'll be off for the next 4 months for business.\n" \
-                    "You're exhausted, have eaten little, and down $150. Atleast you can take a nap before work tomor- \n" \
-                    "Wait, are those birds chirping?")
-                    menu()
+                    typingEffect("'Hey thanks man! You know, it's just as they say, 'What are good friends for?', orr something like that.'\n")
+                    time.sleep(0.5)
+                    typingEffect("Indeed. What else are friends for?\n" \
+                    "After dinner, which indeed was quickly devoured,\nyour friend spends the rest of the night explaining\nto you how he can't pay his energy bill this month \n" \
+                    "due to 'these forsaken AI engineers inflating the cost of water'.\nHe asks you for a loan of $150 promising to pay you back next month.\n" \
+                    "You cave in for anything more than to see him go.\nHe kisses you emphatically and promptly leaves\nquickly mentioning he'll be away for the next 4 months for urgent business.\n")
+                    time.sleep(0.5)
+                    typingEffect("You're exhausted, have eaten little, and down $150.\nAtleast you can take a nap before work tomor- \n")
+                    time.sleep(0.5)
+                    typingEffectSlow("Wait,")
+                    typingEffect(" are those birds chirping?\n")
+                    playagain = typingInput("Play Again? (y/n)\n")
+
+                    if playagain == "y":
+                            menu()
+                    elif playagain == "no":
+                             typingEffect("OK.")
+                             return False
+                    else:
+                             typingEffect("Invalid choice option {Type 'y' or 'n'}\n")
+                             return False
+                
                 elif friends_dinner =="n":
                     typingEffect("'Hey that's no good! We're pals, buddies, friends... amigos! Where do you get off treating me like some stranger?!'\n" \
                     "'You know what, you look tired so you're forgiven. Besides, all that working's probably got you going deaf haha!'\n" \
@@ -92,13 +106,11 @@ def talkative_friend():
 
                 friends_mood = random.randint(1,3)
 
-                print(friends_mood)
-
                 if friends_mood == 1:
                     typingEffect("'Hey buddy, hows it goin! I was in the neighborhood and figured I'd stop by.'\n" \
                     "'Oooooh, what's that smell?? Are you cooking in here? What're you cheffing up tonight?'\n" \
                     "He steps in despite you standing between him and the doorframe.\n" \
-                    "Your friend walks past you and steps into the kitchen looking to check out what you've been cooking for dinner.\n" \
+                    "Your friend walks past you and steps into the kitchen looking for the culprit of such enticing aromas.\n" \
                     "'Ah FRIED CHICKEN??.. With MASHED POTATOES... AND GRAVYY???....'\n" \
                     "'MY FAVORITE!!'\n")
                     output = f_dinner()
@@ -136,15 +148,39 @@ def talkative_friend():
                 elif friends_mood == 3:
                     typingEffect("'Hey buddy! How's it going??'\n")
                     output = l_money()
-        
-        
+ 
+def unexpected_beauty():
+                typingEffect("There stands a woman you've never seen before\n"
+                "She stands with one arm folded while the other holds what looks\n"
+                "to be your your umbrella. You haven't seen this umbrella in 3 days.\n" \
+                "Her brown eye stare at you intently with a sincere mischeviousness, as if\n" \
+                "she haaad be the one to somehow have your property and honestly know who to\n" \
+                "return it to... 3 days later. "
+                "She had intense dark eyes that shown through her dirty tan face.\n")
+                playagain = typingInput("Play Again? (y/n)\n")
 
+                if playagain == "y":
+                            menu()
+                elif playagain == "no":
+                    typingEffect("OK.")
+                    return False
+                else:
+                    typingEffect("Invalid choice option {Type 'y' or 'n'}\n")
+                    return False
+ 
+def nobodys_home():
+                typingEffect("The doorway stands empty. Must've been the wind...\n")  
+                playagain = typingInput("Play Again? (y/n)\n")
 
-
-
-
-
-
+                if playagain == "y":
+                            menu()
+                elif playagain == "no":
+                    typingEffect("OK.")
+                    return False
+                else:
+                    typingEffect("Invalid choice option {Type 'y' or 'n'}\n")
+                    return False
+                     
 
 def play_game():
     typingEffect("Your stomach growls right as you enter the door,\nYou're starving!\n" \
@@ -158,6 +194,15 @@ def play_game():
     choice2 = typingInput("Do you open the door? (y/n)\n")
 
     if choice2 == "y":
+
+        guest = random.randint(1,3)
+        
+        if guest == 1:
+              talkative_friend()
+        elif guest == 2:
+              unexpected_beauty()
+        elif guest == 3:
+              nobodys_home()
 
         typingEffect("You open the door.\n")
         talkative_friend()
