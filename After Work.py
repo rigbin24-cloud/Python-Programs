@@ -80,7 +80,7 @@ def f_dinner(main, side, side2):
 
 
 def happyending():
-      typingEffect("She laughs.\n 'To each their own,' she says.\nYou both spend the rest of the night talking to the sound of the rain.\n" \
+      typingEffect("She laughs.\n'To each their own,' she says.\nYou both spend the rest of the night talking to the sound of the rain.\n" \
       "You both end up falling asleep, snuggled in each other's arms.\n")
       play_again()
 
@@ -125,12 +125,12 @@ def food_ready(main, side, side2):
 
 def tvshow():
     typingEffect("\nYou turn on the TV.\n" \
-    "The weatherman appears as he points toward the weekly forecast.\n"
+    "The weatherman appears as he points toward the weekly forecast.\n\n"
     "'It's expected to rain tonight', she says.\n" \
-    "\nNo sooner after the words are spoken that a bolt of lightning flashes through the window.\n"
+    "\nNo sooner are those words spoken, a bolt of lightning flashes through the window.\n"
     "The sound of a strong rainfall soon follows.\n")
     time.sleep(1.0)
-    typingEffect("\n'I love rain,'she purrs, stretchign out her arms and cuddling against your shoulder.\n")
+    typingEffect("\n'I love rain,' she purrs, stretching out her arms.\nShe cuddles against your shoulder.\n")
 
     while True:
         opinion = typingInput("'Dont you?' she asks. (y/n)\n")
@@ -144,8 +144,9 @@ def tvshow():
 
 
 def sit_down(main, side, side2):
-    typingEffect("You decide to lead her to the living room instead and show her to a seat...\n")
-    typingEffect("'Hey thanks! Hmm... what's on TV?'\n")
+    typingEffect("You decide to lead her to the living room instead.\n")
+    typingEffect("You show her to the sofa.\n")
+    typingEffect("'Hey thanks!' she says,'Hmm... what's on TV?'\n")
 
     while True:
             tv = typingInput("Turn on the TV? (y/n)\n")
@@ -197,7 +198,7 @@ def sit_down2(main, side, side2):
 def food_test(main, side, side2):
             typingEffect("Roll atleast a 5 to succeed in feeding her. ")
             feed = random.randint(1,15)
-            typingInput("Press Enter to roll.\n")
+            typingInput("\nPress Enter to roll.\n")
             print(feed)
             if feed >= 5:
                 typingEffectSlow("\n\n'mh mhh")
@@ -220,10 +221,10 @@ def food_test(main, side, side2):
                         typingEffect("Huh? {Type 'y' or 'n'}\n")
                       
             else:
-                typingEffect("\n\nOOPS! Instead of landing the spoon in her mouth, you accidentally spill the hot gravy onto her legs!\n" \
-                "'AAAEEEIIIII!!!' she yells.\n\nShe quickly brushes the scalding gravy off her legs and, flushing red, hurries out the door.\n" \
+                typingEffect("\n\nOOPS! Instead of landing the spoon in her mouth, you accidentally spill the hot gravy onto her legs!\n\n" \
+                "'AAAEEEIIIII!!!' she yells.\nShe quickly brushes the scalding gravy off her legs and, flushing red, hurries out the door.\n" \
                 "Never to be seen again.\n") 
-                play_again()
+                food_ready()
 
 def kitchen(main, side, side2):
             typingEffect("\nYou both move inside to the kitchen.\nThere you see the bustling pots of food pouring out steam.\n" \
@@ -239,7 +240,7 @@ def kitchen(main, side, side2):
                     food_test(main, side, side2)
                 elif trysome == "n":
                     typingEffect("You decide she doesn't need to try any of the food.\nBesides, you barely know this person...\n")
-                    sit_down()
+                    sit_down(main, side, side2)
                 else:
                     typingEffect("Invalid choice option {Type 'y' or 'n'}\n")
             
@@ -262,7 +263,7 @@ def invite_(main, side, side2):
 def girlfriend(main, side, side2):
                 typingEffect("\n'Oh perfect! I figured it was!'\n" \
                 "'Glad to have it back, huh?'\n" \
-                "'A couple days ago I found it out in the hall. It must've been during that rainstorm.'\n")
+                "'A couple days ago I found it in the hall. It must've been during that rainstorm.'\n")
                 remember(main, side, side2)
                 
                 
