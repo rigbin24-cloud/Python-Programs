@@ -1,0 +1,27 @@
+import sys, random
+
+def ifItIs(): 
+    while True:
+        question = ["question", "query", "pregunta"]
+        word = random.choice(question)     
+        play = input(f"Can I ask you a {word}?\n")
+        if "n" in play:
+                print("Ok.\n")
+                sys.exit()
+        elif "y" in play:
+                fruits = ["apples", "bananas", "grapes", "strawberries", "peaches"]
+                word2 = random.choice(fruits)
+                wonder = input(f"\nDo you like {word2}?\n")
+                if "n" in wonder:
+                    print("\nDang, really?\n")
+                    
+                elif "y" in wonder:
+                    print("\nMe too!\n")
+                   
+                else:
+                    ("Huh, what was that?\n")
+
+        else:
+            ("Huh, what was that?\n")
+
+ifItIs()
