@@ -1,0 +1,90 @@
+import sys, time
+
+def typingEffect(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.05)
+
+def textInput(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    value = input()
+    return value
+
+def numbInput(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    value = int(input())
+    return value
+
+startBalance = float(0)
+
+def bankAccount():
+    typingEffect("Welcome. ")
+    while True:
+        global startBalance
+        option = textInput("""Please select an option:
+    1. Deposit
+    2. Withdraw
+    3. Check Balance
+    4. Exit\n""")
+        if option == "1": ##DEPOSIT
+            typingEffect("Enter deposit amount: ")
+            while True:
+                deposit = numbInput("")
+                if deposit >= 0:
+                    newBalance = startBalance + deposit
+                    startBalance = newBalance
+                    typingEffect(f"\nYou deposit {deposit}. Your new balance is {newBalance}.\nThank you!\n")
+                    cont = textInput("Continue?\n")
+                    if "y" in cont:
+                        break
+                    elif "n" in cont:
+                        typingEffect("Ok.\n")
+                        sys.exit()
+                elif deposit < 0:
+                    typingEffect("\nPlease enter positive dollar amount.\n")
+        elif option == "2": ##WITHDRAW
+            typingEffect("Enter withdraw amount: ")
+            while True:
+                withdraw = numbInput("")
+                if withdraw < 0:
+                    typingEffect("Please enter positive dollar amount.\n")
+                elif withdraw <= startBalance:
+                    newBalance = startBalance - withdraw
+                    startBalance = newBalance
+                    typingEffect(f"\nYou withdraw {withdraw}. Your new balance is {newBalance}.\nThank you!\n")
+                    cont = textInput("Continue?\n")
+                    if "y" in cont:
+                        break
+                    elif "n" in cont:
+                        typingEffect("Ok.\n")
+                        sys.exit()
+                elif withdraw > startBalance:
+                    typingEffect("\nInsufficient funds.\n")
+                    cont = textInput("Continue?\n")
+                    if "y" in cont:
+                        break
+                    elif "n" in cont:
+                        typingEffect("Ok.\n")
+                        sys.exit()
+        elif option =="3": ##CHECK BALANCE
+            typingEffect(f"Your current balance is: {startBalance}\n")
+            time.sleep(0.5)
+            cont = textInput("Continue?\n")
+            if "y" in cont:
+                print("")
+            elif "n" in cont:
+                typingEffect("Ok.\n")
+                sys.exit()
+        elif option =="4":
+            typingEffect("Ok.\n")
+            time.sleep(0.5)
+            sys.exit()
+bankAccount()
+                 
